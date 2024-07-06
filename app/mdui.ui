@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1297</width>
+    <height>897</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>20</y>
+     <width>471</width>
+     <height>49</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>欢迎使用文档图片复现程序</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>800</y>
+     <width>158</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>开始复现</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>90</y>
+     <width>361</width>
+     <height>661</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>欢迎使用文档图片复现程序</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>Excel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>608</x>
+     <y>695</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>636</x>
+     <y>396</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Excel()</slot>
+ </slots>
+</ui>
