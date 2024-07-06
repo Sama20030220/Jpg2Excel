@@ -9,21 +9,29 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import data.resource_rc
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1297, 897)
+        Dialog.resize(1283, 900)
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(470, 20, 471, 49))
+        self.label.setGeometry(QtCore.QRect(400, 20, 471, 49))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(480, 800, 158, 71))
-        self.pushButton.setObjectName("pushButton")
         self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(380, 90, 361, 661))
+        self.label_2.setGeometry(QtCore.QRect(420, 90, 421, 681))
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
+        self.verticalLayoutWidget = QtWidgets.QWidget(Dialog)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(520, 790, 201, 101))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout.addWidget(self.pushButton)
 
         self.retranslateUi(Dialog)
         self.pushButton.clicked.connect(Dialog.Excel) # type: ignore
@@ -33,5 +41,5 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", "欢迎使用文档图片复现程序"))
-        self.pushButton.setText(_translate("Dialog", "开始复现"))
         self.label_2.setText(_translate("Dialog", "欢迎使用文档图片复现程序"))
+        self.pushButton.setText(_translate("Dialog", "开始复现"))

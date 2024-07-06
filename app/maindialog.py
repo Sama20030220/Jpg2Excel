@@ -1,5 +1,7 @@
 from PyQt5.QtGui import QImage, QPixmap, QImageReader
 from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem
+
 from ai.ToExcel import excel
 from app.mdui import Ui_Dialog
 import cv2 as cv
@@ -11,12 +13,15 @@ import data.resource_rc
 class MainDialog(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+
         self.label = QtWidgets.QLabel(self)
         self.setCentralWidget(self.label)
-        self.pixmap = QtGui.QPixmap("data/b")
+
+        # 加载并转换图片为 QPixmap
+        self.pixmap = QPixmap("data/bg.jpg")  # 假设图片路径正确
         if self.pixmap.isNull():
             print("背景图片加载失败")
-        # 设置QLabel的尺寸
+            # 设置QLabel的尺寸
         self.label.resize(self.width(), self.height())
         self.label.setScaledContents(True)
         # 将背景图片设置为QLabel的内容
