@@ -16,7 +16,8 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1283, 900)
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(400, 20, 471, 49))
+        self.label.setGeometry(QtCore.QRect(390, 50, 471, 49))
+        self.label.setStyleSheet("font: 22pt \"Arial\";")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Dialog)
@@ -30,6 +31,7 @@ class Ui_Dialog(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton.setStyleSheet("background-color:rgb(0, 255, 255)")
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
 
