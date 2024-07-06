@@ -1,14 +1,31 @@
 import os
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QPixmap
 from PyQt5.QtWidgets import QDialog
 from openpyxl.utils.dataframe import dataframe_to_rows
 from app.secondui import Ui_Dialog
 import pandas as pd
 
 
-class MainDialog1(QDialog):
+class MainDialog1(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+        self.label = QtWidgets.QLabel(self)
+        self.setCentralWidget(self.label)
+        print("a")
+        # 加载并转换图片为 QPixmap
+        self.pixmap = QPixmap("data/bj.jpg")  # 假设图片路径正确
+        if self.pixmap.isNull():
+            print("背景图片加载失败")
+            # 设置QLabel的尺寸
+        self.label.resize(self.width(), self.height())
+        self.label.setScaledContents(True)
+        # 将背景图片设置为QLabel的内容
+        self.label.setPixmap(self.pixmap.scaled(self.label.size(), aspectRatioMode=QtCore.Qt.KeepAspectRatio,
+                                                transformMode=QtCore.Qt.SmoothTransformation))
+        # 监听窗口大小变化事件
+        self.resizeEvent = self.on_resize
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +36,11 @@ class MainDialog1(QDialog):
         self.ui.label_3.setText(output_file_path2)
         self.show_excel(output_file_path2)
         self.show_txt(output_file_path1)
+
+    def on_resize(self, event):
+        self.label.resize(self.width(), self.height())
+        self.label.setPixmap(self.pixmap.scaled(self.label.size(), aspectRatioMode=QtCore.Qt.KeepAspectRatio,
+                                                transformMode=QtCore.Qt.SmoothTransformation))
 
     def show_excel(self, excel_path):
         """
