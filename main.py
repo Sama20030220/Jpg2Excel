@@ -1,4 +1,8 @@
+from app.myapp import MApp
 import sys
-if __name__ == '__main__':
-    print("hhh")
-    print('')
+app = MApp()
+# 运行程序
+
+# 退出程序
+sys.exit(app.exec())
+
