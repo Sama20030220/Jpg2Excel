@@ -1,6 +1,7 @@
+import numpy as np
 from PyQt5.QtGui import QImage, QPixmap, QImageReader
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QFileDialog
 
 from ai.ToExcel import excel
 from app.mdui import Ui_Dialog
@@ -31,8 +32,21 @@ class MainDialog(QtWidgets.QMainWindow):
         self.resizeEvent = self.on_resize
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.img = cv.imread('data/excel1.jpg')
-        self.showimg()
+        self.ui.Button_Image.clicked.connect(
+            self.selectAndShowImage)
+        # self.img = cv.imread('data/excel1.jpg')
+        # self.showimg()
+
+    def selectAndShowImage(self):
+        # 使用QFileDialog打开文件对话框选择图片
+        file_path, _ = QFileDialog.getOpenFileName(self, "选择图片", "", "Image Files (*.png *.jpg *.jpeg *.bmp)")
+        if file_path:  # 如果用户选择了文件
+            # 读取用户选择的图片
+            self.img = cv.imread(file_path)
+            if self.img is None:  # 检查图片是否成功读取
+                print("图片读取失败，请确保文件路径正确。")
+            else:
+                self.showimg()  # 显示图片
 
     def on_resize(self, event):
         self.label.resize(self.width(), self.height())
@@ -49,7 +63,8 @@ class MainDialog(QtWidgets.QMainWindow):
         self.ui.label_2.setPixmap(scale_pix)
 
     def Excel(self):
-        boundaries = excel(self.img)
+        # boundaries = excel(self.img)
+        boundaries = excel(np.array(self.img))
         Words(boundaries)
         self.md = MainDialog1()
         self.md.show()

@@ -51,7 +51,7 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>660</x>
      <y>790</y>
      <width>201</width>
      <height>101</height>
@@ -65,6 +65,28 @@
       </property>
       <property name="text">
        <string>开始复现</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>790</y>
+     <width>201</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QPushButton" name="Button_Image">
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>选择图片</string>
       </property>
      </widget>
     </item>
@@ -89,8 +111,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Button_Image</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>selectAndShowImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>550</x>
+     <y>839</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>641</x>
+     <y>449</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>Excel()</slot>
+  <slot>selectAndShowImage()</slot>
  </slots>
 </ui>

@@ -25,7 +25,7 @@ class Ui_Dialog(object):
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.verticalLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(520, 790, 201, 101))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(660, 790, 201, 101))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -34,9 +34,20 @@ class Ui_Dialog(object):
         self.pushButton.setStyleSheet("background-color:rgb(0, 255, 255)")
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(Dialog)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(450, 790, 201, 101))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.Button_Image = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.Button_Image.setStyleSheet("background-color:rgb(0, 255, 255)")
+        self.Button_Image.setObjectName("Button_Image")
+        self.verticalLayout_2.addWidget(self.Button_Image)
 
         self.retranslateUi(Dialog)
         self.pushButton.clicked.connect(Dialog.Excel) # type: ignore
+        self.Button_Image.clicked.connect(Dialog.selectAndShowImage) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -45,3 +56,4 @@ class Ui_Dialog(object):
         self.label.setText(_translate("Dialog", "欢迎使用文档图片复现程序"))
         self.label_2.setText(_translate("Dialog", "欢迎使用文档图片复现程序"))
         self.pushButton.setText(_translate("Dialog", "开始复现"))
+        self.Button_Image.setText(_translate("Dialog", "选择图片"))
