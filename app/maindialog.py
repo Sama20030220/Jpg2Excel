@@ -1,12 +1,12 @@
 import numpy as np
-from PyQt5.QtGui import QImage, QPixmap, QImageReader
+from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QFileDialog
+from PyQt5.QtWidgets import QFileDialog
 
 from ai.ToExcel import excel
 from app.mdui import Ui_Dialog
 import cv2 as cv
-from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5 import QtWidgets, QtCore
 from app.mainsec import MainDialog1
 from ai.ToWords import Words
 
@@ -17,13 +17,11 @@ class MainDialog(QtWidgets.QMainWindow):
 
         self.label = QtWidgets.QLabel(self)
         self.setCentralWidget(self.label)
-
         # 加载并转换图片为 QPixmap
         self.pixmap = QPixmap("data/bg.jpg")  # 假设图片路径正确
         if self.pixmap.isNull():
             print("背景图片加载失败")
-            # 设置QLabel的尺寸
-        self.label.resize(self.width(), self.height())
+        self.label.resize(self.width(), self.height())  # 设置QLabel的尺寸
         self.label.setScaledContents(True)
         # 将背景图片设置为QLabel的内容
         self.label.setPixmap(self.pixmap.scaled(self.label.size(), aspectRatioMode=QtCore.Qt.KeepAspectRatio,
@@ -40,13 +38,12 @@ class MainDialog(QtWidgets.QMainWindow):
     def selectAndShowImage(self):
         # 使用QFileDialog打开文件对话框选择图片
         file_path, _ = QFileDialog.getOpenFileName(self, "选择图片", "", "Image Files (*.png *.jpg *.jpeg *.bmp)")
-        if file_path:  # 如果用户选择了文件
-            # 读取用户选择的图片
+        if file_path:
             self.img = cv.imread(file_path)
-            if self.img is None:  # 检查图片是否成功读取
+            if self.img is None:
                 print("图片读取失败，请确保文件路径正确。")
             else:
-                self.showimg()  # 显示图片
+                self.showimg()
 
     def on_resize(self, event):
         self.label.resize(self.width(), self.height())

@@ -1,8 +1,6 @@
 import os
-
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QPixmap
-from PyQt5.QtWidgets import QDialog
 from openpyxl.utils.dataframe import dataframe_to_rows
 from app.secondui import Ui_Dialog
 import pandas as pd
@@ -15,11 +13,10 @@ class MainDialog1(QtWidgets.QMainWindow):
         self.setCentralWidget(self.label)
         print("a")
         # 加载并转换图片为 QPixmap
-        self.pixmap = QPixmap("data/bj.jpg")  # 假设图片路径正确
+        self.pixmap = QPixmap("data/bj.jpg")
         if self.pixmap.isNull():
             print("背景图片加载失败")
-            # 设置QLabel的尺寸
-        self.label.resize(self.width(), self.height())
+        self.label.resize(self.width(), self.height())  # 设置QLabel的尺寸
         self.label.setScaledContents(True)
         # 将背景图片设置为QLabel的内容
         self.label.setPixmap(self.pixmap.scaled(self.label.size(), aspectRatioMode=QtCore.Qt.KeepAspectRatio,

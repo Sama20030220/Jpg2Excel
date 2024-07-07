@@ -2,7 +2,7 @@ import requests
 import base64
 
 
-def in_it(words_xy, Excel_xy):  #   判断矩形rectangle是否完全被矩形container包含。
+def in_it(words_xy, Excel_xy):  #   判断识别的文字外接四边形是否完全被表格四边形包含。
     words_xmin_ymax = {'x': min(p['x'] for p in words_xy), 'y': min(p['y'] for p in words_xy)}  # 提取矩形的左上角和右下角坐标
     words_xmax_ymin = {'x': max(p['x'] for p in words_xy), 'y': max(p['y'] for p in words_xy)}
     Excel_xmin_ymax = {'x': min(p['x'] for p in Excel_xy), 'y': min(p['y'] for p in Excel_xy)}

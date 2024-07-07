@@ -12,7 +12,9 @@ def save_excel(base64_str, filename='output.xlsx'):   # 将Base64编码的Excel�
 
 
 def cv_image_to_base64(cv_image):
-    """将OpenCV图像转换为Base64编码"""
+    """
+    将OpenCV图像转换为Base64编码
+    """
     is_success, buffer = cv2.imencode(".jpg", cv_image)
     if not is_success:
         raise ValueError("Failed to encode image.")
